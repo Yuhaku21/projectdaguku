@@ -5,38 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Daguku</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
+      :root {
+        --main-bg-color: #feecb3;
+        --card-width-mobile: 9rem;
+        --card-width-desktop: 14rem;
+        --card-radius: 10px;
+        --image-height: 150px;
+        --font-size-small: 12px;
+        --skeleton-bg: #e0e0e0;
+        --skeleton-animation: 1.5s;
+      }
+      body {
+        background-color: var(--main-bg-color);
+      }
+
+      /* Base Styles for Cards */
       .custom-card {
-        width: 9rem; /* Default size for mobile */
-        margin-top: 1rem; /* Default margin-top for mobile */
-        font-size: 12px;
+        width: var(--card-width-mobile);
+        margin-top: 1rem;
+        font-size: var(--font-size-small);
+        border-radius: var(--card-radius);
+        transition: transform 0.2s;
       }
+
+      /* Image inside the card */
       .fixed-image {
-        height: 150px; /* Set the height of the image */
-        width: 100%; /* Image will take the full width of the card */
-        object-fit: cover; /* Maintain aspect ratio, cover the entire area */
+        height: var(--image-height);
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: var(--card-radius);
+        border-top-right-radius: var(--card-radius);
+        display: none;
       }
-      /* Media query for devices wider than 768px (typically tablets and desktops) */
+
+      /* Hover effect for cards */
+      .custom-card:hover {
+        transform: scale(1.05);
+      }
+
+      /* Card title styling */
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: black;
+        display: none;
+      }
+
       @media (min-width: 768px) {
         .custom-card {
-          width: 14rem; /* Larger size for desktop */
-          margin-top: 0; /* Remove margin-top on desktop */
+          width: var(--card-width-desktop);
+          margin-top: 0;
         }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          margin-top: 50px;
+        }
+
+        .custom-card {
+          margin-top: 1.5rem;
+        }
+      }
+
+      /* Skeleton loader base styles */
+      .skeleton-image,
+      .skeleton-title {
+        background-color: var(--skeleton-bg);
+        border-radius: 4px;
+        animation: pulse var(--skeleton-animation) infinite ease-in-out;
+      }
+
+      .skeleton-image {
+        width: 100%;
+        height: var(--image-height);
+        margin-bottom: 10px;
+      }
+
+      .skeleton-title {
+        width: 60%;
+        height: 20px;
+        margin: 0 auto 8px;
+      }
+
+      @keyframes pulse {
+        0% {
+          background-color: var(--skeleton-bg);
+        }
+        50% {
+          background-color: #f0f0f0;
+        }
+        100% {
+          background-color: var(--skeleton-bg);
+        }
+      }
+
+      /* Hide the skeleton when the card is loaded */
+      .loaded .skeleton-image,
+      .loaded .skeleton-title {
+        display: none;
+      }
+
+      /* Show the content when the card is loaded */
+      .loaded img,
+      .loaded .card-title {
+        display: block;
       }
     </style>
   </head>
   <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-2" href="#">
           <img src="logodaguku.png" alt="Bootstrap" width="110" height="30" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse me-2" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
@@ -90,46 +180,66 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
     <!--Carousel-->
 
     <!--Message-->
     <div class="container mt-3">
-      <div class="alert alert-success" role="alert"><marquee direction="">Top-up game favoritmu tanpa biaya admin di Daguku! Top-up lebih puas, bayar lebih hemat! 🥳🥳🥳</marquee></div>
+      <div class="alert alert-success" role="alert">
+        <marquee>Top-up game favoritmu tanpa biaya admin di Daguku! Top-up lebih puas, bayar lebih hemat! 🥳🥳🥳</marquee>
+      </div>
     </div>
     <!--Message-->
 
-    <!--ProdukGames-->
+    <!-- ProdukGames -->
     <div class="container mt-4 mb-4">
-      <h2><b>Rekomendasi ✨</b></h2>
-      <!--listproduk-->
-      <div class="row text-center" style="display: flex">
+      <h2><b>Rekomendasi 🔥</b></h2>
+      <!-- listproduk -->
+      <div class="row text-center">
         <div class="col">
           <a href="mobile_legends.html" target="_blank" class="text-decoration-none">
             <div class="card custom-card shadow">
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
               <img src="ml.jpg" class="card-img-top fixed-image" alt="Mobile Legends" />
               <div class="card-body">
-                <h5 class="card-title" style="color: black"><b>Mobile Legends</b></h5>
+                <h5 class="card-title"><b>Mobile Legends</b></h5>
               </div>
             </div>
           </a>
         </div>
+
         <div class="col">
           <a href="free_fire.html" target="_blank" class="text-decoration-none">
             <div class="card custom-card shadow">
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
               <img src="freefire.jpg" class="card-img-top fixed-image" alt="Free Fire" />
               <div class="card-body">
-                <h5 class="card-title" style="color: black"><b>Free Fire</b></h5>
+                <h5 class="card-title"><b>Free Fire</b></h5>
               </div>
             </div>
           </a>
         </div>
         <div class="col">
-          <a href="honor_of_kings.html" target="_blank" class="text-decoration-none">
+          <a href="pubg_mobile.html" target="_blank" class="text-decoration-none">
             <div class="card custom-card shadow">
-              <img src="hok.jpg" class="card-img-top fixed-image" alt="Honor of Kings" />
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
+              <img src="pubg.jpg" class="card-img-top fixed-image" alt="Free Fire" />
               <div class="card-body">
-                <h5 class="card-title" style="color: black"><b>Honor of Kings</b></h5>
+                <h5 class="card-title"><b>PUBG Mobile</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a href="valorant.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
+              <img src="valorant.jpg" class="card-img-top fixed-image" alt="Free Fire" />
+              <div class="card-body">
+                <h5 class="card-title"><b>Valorant</b></h5>
               </div>
             </div>
           </a>
@@ -137,17 +247,48 @@
         <div class="col">
           <a href="genshin_impact.html" target="_blank" class="text-decoration-none">
             <div class="card custom-card shadow">
-              <img src="images.jpg" class="card-img-top fixed-image" alt="Genshin Impact" />
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
+              <img src="images.jpg" class="card-img-top fixed-image" alt="Free Fire" />
               <div class="card-body">
-                <h5 class="card-title" style="color: black"><b>Genshin Impact</b></h5>
+                <h5 class="card-title"><b>Genshin Impact</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a href="steam.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <div class="skeleton-image"></div>
+              <div class="skeleton-title"></div>
+              <img src="steam.jpeg" class="card-img-top fixed-image" alt="Free Fire" />
+              <div class="card-body">
+                <h5 class="card-title"><b>Steam Wallet</b></h5>
               </div>
             </div>
           </a>
         </div>
       </div>
-      <!--listproduk-->
+      <!-- listproduk -->
     </div>
-    <!--Produkgames-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- ProdukGames -->
+
+    <!--Pulsa&Utilitas-->
+    <div class="container mt-4 mb-4">
+      <h2><b>Pulsa dan Utilitas ✨</b></h2>
+    </div>
+    <!--Pulsa&Utilitas-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Simulate a delay for loading
+        setTimeout(function () {
+          var cards = document.querySelectorAll(".card");
+          cards.forEach(function (card) {
+            card.classList.add("loaded");
+          });
+        }, 3000); // Adjust delay as needed
+      });
+    </script>
   </body>
 </html>
