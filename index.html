@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daguku</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <style>
+      .custom-card {
+        width: 9rem; /* Default size for mobile */
+        margin-top: 1rem; /* Default margin-top for mobile */
+        font-size: 12px;
+      }
+      .fixed-image {
+        height: 150px; /* Set the height of the image */
+        width: 100%; /* Image will take the full width of the card */
+        object-fit: cover; /* Maintain aspect ratio, cover the entire area */
+      }
+      /* Media query for devices wider than 768px (typically tablets and desktops) */
+      @media (min-width: 768px) {
+        .custom-card {
+          width: 14rem; /* Larger size for desktop */
+          margin-top: 0; /* Remove margin-top on desktop */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="logodaguku.png" alt="Bootstrap" width="110" height="30" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                ><b><i class="bi bi-house-fill"></i> Beranda</b></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                ><b><i class="bi bi-trophy-fill"></i> Info Tourney</b></a
+              >
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Lihat Tournament</a></li>
+                <li><a class="dropdown-item" href="#">Leaderboard Tournament</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#"
+                ><b><i class="bi bi-headset"></i> Kontak Kami</b></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navbar-->
+
+    <!--Carousel-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="iklan2.jpg" class="d-block w-100" alt="..." style="max-height: 400px; object-fit: cover" />
+        </div>
+        <div class="carousel-item">
+          <img src="iklan2.jpg" class="d-block w-100" alt="..." style="max-height: 400px; object-fit: cover" />
+        </div>
+        <div class="carousel-item">
+          <img src="iklan2.jpg" class="d-block w-100" alt="..." style="max-height: 400px; object-fit: cover" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!--Carousel-->
+
+    <!--Message-->
+    <div class="container mt-3">
+      <div class="alert alert-success" role="alert"><marquee direction="">Top-up game favoritmu tanpa biaya admin di Daguku! Top-up lebih puas, bayar lebih hemat! 🥳🥳🥳</marquee></div>
+    </div>
+    <!--Message-->
+
+    <!--ProdukGames-->
+    <div class="container mt-4 mb-4">
+      <h2><b>Rekomendasi ✨</b></h2>
+      <!--listproduk-->
+      <div class="row text-center" style="display: flex">
+        <div class="col">
+          <a href="mobile_legends.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <img src="ml.jpg" class="card-img-top fixed-image" alt="Mobile Legends" />
+              <div class="card-body">
+                <h5 class="card-title" style="color: black"><b>Mobile Legends</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a href="free_fire.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <img src="freefire.jpg" class="card-img-top fixed-image" alt="Free Fire" />
+              <div class="card-body">
+                <h5 class="card-title" style="color: black"><b>Free Fire</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a href="honor_of_kings.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <img src="hok.jpg" class="card-img-top fixed-image" alt="Honor of Kings" />
+              <div class="card-body">
+                <h5 class="card-title" style="color: black"><b>Honor of Kings</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a href="genshin_impact.html" target="_blank" class="text-decoration-none">
+            <div class="card custom-card shadow">
+              <img src="images.jpg" class="card-img-top fixed-image" alt="Genshin Impact" />
+              <div class="card-body">
+                <h5 class="card-title" style="color: black"><b>Genshin Impact</b></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!--listproduk-->
+    </div>
+    <!--Produkgames-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
